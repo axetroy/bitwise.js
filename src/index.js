@@ -7,7 +7,8 @@
  */
 function cleanInput(value) {
 	if (typeof value === "bigint") return value;
-	if (typeof value === "number") return Math.trunc(value);
+	if (typeof value === "number" && !Number.isNaN(value) && Number.isFinite(value)) return Math.trunc(value);
+	if (typeof value === "string") return cleanInput(Number(value));
 	throw new TypeError("Input must be either number or bigint");
 }
 
