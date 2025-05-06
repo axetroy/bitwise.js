@@ -21,7 +21,7 @@ npm install bitwise.js --save
 import { bitwise } from "bitwise.js";
 
 console.log(bitwise.and(5, 3n)); // => 1n (5 & 3n)
-console.log(bitwise.or(2.7, 3)); // => 3 (2 & 3)
+console.log(bitwise.or(2.7, 3)); // => 3 (2 | 3)
 console.log(bitwise.xor(5, 3)); // => 6 (5 ^ 3)
 console.log(bitwise.not(5)); // => -6 (~5)
 console.log(bitwise.leftShift(3.9, 2)); // => 12 (3 << 2)
