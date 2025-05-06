@@ -3,12 +3,12 @@
 export type BitwiseType = "bigint" | "number";
 
 export interface Bitwise {
-	and(a: number | bigint, b: number | bigint, prefer?: BitwiseType): number | bigint;
-	or(a: number | bigint, b: number | bigint, prefer?: BitwiseType): number | bigint;
-	xor(a: number | bigint, b: number | bigint, prefer?: BitwiseType): number | bigint;
-	not(a: number | bigint): number | bigint;
-	leftShift(a: number | bigint, bits?: number | bigint): number | bigint;
-	rightShift(a: number | bigint, bits?: number | bigint): number | bigint;
+	and<T extends number | bigint>(a: T, b: T): T extends bigint ? bigint : number;
+	or<T extends number | bigint>(a: T, b: T): T extends bigint ? bigint : number;
+	xor<T extends number | bigint>(a: T, b: T): T extends bigint ? bigint : number;
+	not<T extends number | bigint>(a: T): T;
+	leftShift<T extends number | bigint>(a: T, bits?: T): T extends bigint ? bigint : number;
+	rightShift<T extends number | bigint>(a: T, bits?: T): T extends bigint ? bigint : number;
 	zeroFillRightShift(a: number, bits?: number): number;
 }
 
