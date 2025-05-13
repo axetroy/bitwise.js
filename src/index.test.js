@@ -8,6 +8,7 @@ describe("bitwise.js", () => {
 		assert.strictEqual(bitwise.and(5, 3), 1, "5 & 3 should be 1");
 		assert.strictEqual(bitwise.and(5.9, 3.2), 1, "5.9 & 3.2 should be 1");
 		assert.strictEqual(bitwise.and(5n, 3), 1n, "5n & 3 should be 1n");
+		assert.strictEqual(bitwise.and(10, -3), 8, "10 & -3 should be 8");
 	});
 
 	test("OR", () => {
@@ -25,6 +26,7 @@ describe("bitwise.js", () => {
 	test("NOT", () => {
 		assert.strictEqual(bitwise.not(5), -6, "~5 should be -6");
 		assert.strictEqual(bitwise.not(5.9), -6, "~5.9 should be -6");
+		assert.strictEqual(bitwise.not(2), -3, "~2 should be -3");
 	});
 
 	test("Left Shift", () => {

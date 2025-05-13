@@ -18,11 +18,12 @@ function toBinaryString(num, length = 64) {
 	if (isNegative) {
 		// 补码表示负数
 		binary = binary.padStart(length, "0");
+
+		// 负数要反转
 		binary = binary
 			.split("")
 			.map((bit) => (bit === "0" ? "1" : "0"))
 			.join("");
-		binary = (parseInt(binary, 2) + 1).toString(2).padStart(length, "0");
 	}
 
 	return binary.padStart(length, "0");
