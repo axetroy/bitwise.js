@@ -51,3 +51,33 @@ describe("bitwise.js", () => {
 		);
 	});
 });
+
+describe("32 bits integer oversize", () => {
+	test("AND", () => {
+		assert.strictEqual(bitwise.and(1, 8589934592), 0, "1 & 8589934592 should be 0");
+	});
+
+	test("OR", () => {
+		assert.strictEqual(bitwise.or(1, 8589934592), 8589934593, "1 | 8589934592 should be 8589934593");
+	});
+
+	test("NOT", () => {
+		assert.strictEqual(bitwise.not(8589934592), -8589934593, "~8589934592 should be -8589934593");
+	});
+
+	test("XOR", () => {
+		assert.strictEqual(bitwise.xor(1, 8589934592), 8589934593, "1 ^ 8589934592 should be 8589934593");
+	});
+
+	test("Left Shift", () => {
+		assert.strictEqual(bitwise.leftShift(1, 33), 8589934592, "1 << 33 should be 8589934592");
+	});
+
+	test("Right Shift", () => {
+		assert.strictEqual(bitwise.rightShift(8589934592, 33), 1, "8589934592 >> 33 should be 1");
+	});
+
+	test("Zero-fill Right Shift", () => {
+		assert.strictEqual(bitwise.zeroFillRightShift(8589934592, 33), 1, "8589934592 >>> 33 should be 1");
+	});
+});

@@ -1,4 +1,4 @@
-// bitwise.js
+import { bitwiseAND, bitwiseOR, bitwiseXOR, bitwiseNOT, leftShift, rightShift, unsignedRightShift } from "./bitwise.js";
 
 /**
  * Clean the input to ensure it is an integer (truncate `Number`, keep `BigInt`)
@@ -31,33 +31,65 @@ function toSameType(a, b) {
 export const bitwise = {
 	and(a, b) {
 		const [x, y] = toSameType(a, b);
-		return x & y;
+
+		if (typeof x === "bigint") {
+			return x & y;
+		}
+
+		return bitwiseAND(x, y);
 	},
 	or(a, b) {
 		const [x, y] = toSameType(a, b);
-		return x | y;
+
+		if (typeof x === "bigint") {
+			return x | y;
+		}
+
+		return bitwiseOR(x, y);
 	},
 	xor(a, b) {
 		const [x, y] = toSameType(a, b);
-		return x ^ y;
+
+		if (typeof x === "bigint") {
+			return x ^ y;
+		}
+
+		return bitwiseXOR(x, y);
 	},
 	not(a) {
 		const [x] = toSameType(a, 0);
-		return ~x;
+
+		if (typeof x === "bigint") {
+			return ~x;
+		}
+
+		return bitwiseNOT(x);
 	},
 	leftShift(a, bits = 1) {
 		const [x, y] = toSameType(a, bits);
-		return typeof x === "bigint" ? x << BigInt(y) : x << y;
+
+		if (typeof x === "bigint") {
+			return x << BigInt(y);
+		}
+
+		return leftShift(x, y);
 	},
 	rightShift(a, bits = 1) {
 		const [x, y] = toSameType(a, bits);
-		return typeof x === "bigint" ? x >> BigInt(y) : x >> y;
+
+		if (typeof x === "bigint") {
+			return x >> BigInt(y);
+		}
+
+		return rightShift(x, y);
 	},
 	zeroFillRightShift(a, bits = 1) {
 		const [x, y] = toSameType(a, bits);
+
 		if (typeof x === "bigint") {
 			throw new Error("BigInt does not support unsigned right shift (>>>)");
 		}
-		return x >>> y;
+
+		return unsignedRightShift(x, y);
 	},
 };
