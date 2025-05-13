@@ -1,6 +1,6 @@
 {
     "name": "bitwise.js",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "private": false,
     "description": "A utility for bitwise operations that supports both number and bigint types in JavaScript/TypeScript.",
     "sideEffects": false,
